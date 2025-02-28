@@ -1,0 +1,219 @@
+/* Estilos generales */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.navbar {
+    width: 100%;
+    height: 17vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #17223b;
+    padding: 3% 2% 3% 3%;
+    margin-bottom: 30px;
+    font-family: "Roboto";
+    position: relative;
+}
+
+.logo {
+    width: 80px;
+    cursor: pointer;
+}
+
+ul {
+    flex: 1;
+    list-style: none;
+    text-align: center;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+    color: #ebebeb;
+    padding: 0 10px;
+    position: relative;
+}
+
+ul li .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #EEA36B;
+    transition: width 0.3s ease;
+}
+
+ul li:hover .underline {
+    width: 100%;
+}
+.li-cate {
+    display: flex;
+    align-items: center;
+}
+
+.flecha {
+    margin-left: 10px;
+    width: 10px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #17223b;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 200px;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+ul li:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    display: block;
+    padding: 10px 20px;
+}
+
+.submenu li:hover {
+    color: #EEA36B;
+    /* background-color: #EEA36B; */
+}
+
+.logo-registro {
+    width: 35px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+.button-registro {
+    display: flex;
+}
+
+.bloque-registro {
+    margin-left: 10px;
+    font-size: small;
+    color: #ebebeb;
+}
+
+.bloque-registro:hover {
+    font-family: "Roboto";
+    cursor: pointer;
+    color: #EEA36B;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #EEA36B;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.search-box input {
+    padding: 2px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font-size: 18px;
+    max-width: 200px;
+}
+
+.search-box input::placeholder {
+    color: #ffd9bc;
+}
+
+.search-box img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.button-carro img {
+    width: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.logo-carro {
+    width: 30px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ul {
+        width: 100%;
+        text-align: left;
+        display: none;
+        flex-direction: column;
+    }
+
+    ul li {
+        display: block;
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    ul li:hover .submenu {
+        position: static;
+        display: block;
+    }
+
+    .search-box, .button-registro {
+        margin-top: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ul {
+        width: 100%;
+        text-align: left;
+        display: none;
+        flex-direction: column;
+    }
+
+    ul li {
+        display: block;
+        margin: 0;
+        padding: 10px;
+        width: 100%;
+    }
+
+    ul li:hover .submenu {
+        position: static;
+        display: block;
+    }
+
+    .search-box, .button-registro {
+        margin-top: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+}
