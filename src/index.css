@@ -1,0 +1,39 @@
+@tailwind base;
+/* @tailwind components; */
+@tailwind utilities;
+
+/* @layer base {
+    p{
+        @apply mb-3
+    }
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body, html {
+    color:black;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #ebebeb;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+
+.cnt-tarjeta {
+  margin-left: 50px;
+  margin-right: 50px;
+  
+}
+
+.cnt-nav {
+  margin-right: 20px;
+}

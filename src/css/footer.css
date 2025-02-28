@@ -1,0 +1,101 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+.footer {
+    background-color: #17223b;
+    color: #fff;
+    padding: 40px 0;
+    text-align: left;
+    margin-top: 50px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+  }
+  
+  .footer-heading {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #f2f2f2;
+    position: relative;
+  }
+  
+  .footer-heading::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: #ff9a00; /* Color naranja */
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+  }
+  
+  .footer-section p {
+    margin: 0 0 10px;
+    line-height: 1.5;
+  }
+  
+  .footer-section a {
+    color: #f2f2f2;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left; /* Asegura que los enlaces estén alineados a la izquierda */
+  }
+  
+  .footer-section a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-section .social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #eea36b;
+  }
+
+  .footer-section.links ul {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Quita el padding por defecto de la lista */
+  }
+  
+  .footer-section.links ul li {
+    margin-bottom: 10px;
+    text-align: left; /* Asegura que los elementos de la lista estén alineados a la izquierda */
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  .footer-bottom {
+    background-color: #101a33;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+    }
+  
+    .footer-section {
+      margin-bottom: 20px;
+    }
+  }
+  

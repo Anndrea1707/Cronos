@@ -1,0 +1,109 @@
+/* contacto.css */
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 5px rgba(226, 104, 4, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.button-contacto {
+    border-radius: 30px;
+    background-color: #17223b;
+}
+
+.button-contacto:hover {
+    color: black;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background-color: #EEA36B;
+    transition: all 0.5s ease;
+}
+
+.container-contac {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .photo-cards-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .photo-card {
+    flex: 1;
+    margin: 0 10px;
+    perspective: 1000px;
+  }
+  
+  .photo-card-inner {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjusted height */
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  
+  .photo-card:hover .photo-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .photo-card-front,
+  .photo-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+  }
+  
+  .photo-card-front {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .photo-card-front img {
+    width: 80%;
+    height: 80%; /* Adjusted height */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .photo-card-back {
+    background-color: #f0c19bd7;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .photo-card-back p {
+    text-align: left;
+  }
+  .contact-card {
+    margin-bottom: 20px; /* Adjusted margin */
+  }
+  
+  .mt-10 {
+    margin-top: 2.5rem;
+  }
+
+h4 {
+    font-style: italic;
+}
+
+.contact-page img {
+  z-index: -1;
+}
