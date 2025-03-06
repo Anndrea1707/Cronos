@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../css/navbar.css";
-import logo_merca from "../assets/logo1.png";
+import logo from "../assets/logoCronos.jpg";
 import logo_search from "../assets/buscar.png";
 import logo_registro from "../assets/registro-usuarioWhite.png";
 import flecha from "../assets/flecha.png";
@@ -38,8 +38,8 @@ const Navbar = ({ onCategoryChange }) => {
 
   return (
     <div className="navbar">
-      <Link to="/">
-        <img src={logo_merca} alt="logo mercaemprende" className="logo" /> <h2 className="nameMerca">MercaEmprende</h2>
+      <Link to="/" className="logo-container">
+        <img src={logo} alt="logo mercaemprende" className="logo" /> 
       </Link>
       <ul>
         <li>

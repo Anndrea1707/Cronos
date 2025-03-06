@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.inicio {
+  }
+
 ul,
 li {
   list-style: none;
@@ -94,9 +102,9 @@ li {
 .styled-h3::after {
   content: ""; 
   display: block;
-  width: 75%;
+  width: 95%;
   height: 2px; 
-  background-color: #17223b; 
+  background-color: #d4af37; 
   position: absolute;
   bottom: 0;
   left: 0; 

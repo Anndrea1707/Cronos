@@ -1,0 +1,44 @@
+.destacada-container {
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, #080b15, #3c0114); 
+    color: #efefef;
+    padding: 120px;
+    margin-bottom: 50px;
+    min-height: 600px;
+  }
+  
+  .destacada-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .destacada-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    margin-right: 50px;
+  }
+  
+  .btn-destacada {
+    background: #d4af37; /* Dorado */
+    color: black;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .btn-destacada:hover {
+    background: #b8860b;
+  }
+  
+  .destacada-image img {
+    width: 650px;
+    border-radius: 10px;
+  }
+  

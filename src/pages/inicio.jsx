@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 import "../css/inicio.css";
 import { data } from "../assets/data";
 import estadistica from "../assets/estadistica.jpg";
+import SeccionDestacada from "../components/seccionDestacada";
 
 const Inicio = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -80,71 +81,51 @@ const Inicio = () => {
 
   return (
     <>
-      <Navbar onCategoryChange={() => {}} />
-      <h3 className="titulo styled-h3">Descubre lo que tenemos para ti</h3>
-      <div className="main-container">
-        <div className="slider-container">
-          <div className="leftArrow" onClick={() => scrollToImage("prev")}>
-            &#10092;
-          </div>
-          <div className="rightArrow" onClick={() => scrollToImage("next")}>
-            &#10093;
-          </div>
-          <div className="container-images">
-            <ul ref={listRef} className="slider-list lista">
-              {data.map((item, index) => (
-                <li
-                  key={item.id}
-                  className={`slide ${index === currentIndex ? "active" : ""}`}
-                >
-                  <img src={item.imgUrl} alt={`Slide ${index}`} />
-                </li>
-              ))}
-            </ul>
+      <div className="inicio">
+        <Navbar onCategoryChange={() => { }} />
+        <SeccionDestacada />
+
+        <br />
+
+        <h3 className="titulo styled-h3"></h3>
+        <div className="container-prod">
+          <div className="products-container">
+            {randomNewProducts.map((product) => (
+              <Producto
+                key={product.id}
+                product={product}
+                onClick={handleProductClick}
+              />
+            ))}
           </div>
         </div>
-      </div>
 
-      <br />
+        <br />
 
-      <h3 className="titulo styled-h3">Productos nuevos</h3>
-      <div className="container-prod">
-        <div className="products-container">
-          {randomNewProducts.map((product) => (
-            <Producto
-              key={product.id}
-              product={product}
-              onClick={handleProductClick}
-            />
-          ))}
+        <h3 className="titulo styled-h3">Productos en descuento</h3>
+        <div className="container-prod">
+          <div className="products-container">
+            {randomDiscountedProducts.map((product) => (
+              <Producto
+                key={product.id}
+                product={product}
+                onClick={handleProductClick}
+              />
+            ))}
+          </div>
         </div>
+
+        <br />
+
+        <h3 className="titulo styled-h3">Nuestros mejores emprendimientos</h3>
+        <img src={estadistica} alt="estadistica-empresas" className="estadistica" />
+
+        {selectedProduct && (
+          <PreviewModal product={selectedProduct} onClose={handleClosePreview} />
+        )}
+
+        <Footer />
       </div>
-
-      <br />
-
-      <h3 className="titulo styled-h3">Productos en descuento</h3>
-      <div className="container-prod">
-        <div className="products-container">
-          {randomDiscountedProducts.map((product) => (
-            <Producto
-              key={product.id}
-              product={product}
-              onClick={handleProductClick}
-            />
-          ))}
-        </div>
-      </div>
-
-      <br />
-
-      <h3 className="titulo styled-h3">Nuestros mejores emprendimientos</h3>
-      <img src={estadistica} alt="estadistica-empresas" className="estadistica"/>
-
-      {selectedProduct && (
-        <PreviewModal product={selectedProduct} onClose={handleClosePreview} />
-      )}
-
-      <Footer />
     </>
   );
 };
