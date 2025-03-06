@@ -1,7 +1,6 @@
 /*Pagina web para emprendedores de bucaramanga realizada por:
 Melissa Hernandez
-Paula Llanes
-Jeisy Jimenez */
+Ashly Herrera*/
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'

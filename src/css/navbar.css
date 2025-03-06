@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+.nameMerca {
+    color: #ebebeb;
+}
+
 ul {
     flex: 1;
     list-style: none;

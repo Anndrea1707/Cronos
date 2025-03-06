@@ -39,7 +39,7 @@ const Navbar = ({ onCategoryChange }) => {
   return (
     <div className="navbar">
       <Link to="/">
-        <img src={logo_merca} alt="logo mercaemprende" className="logo" />
+        <img src={logo_merca} alt="logo mercaemprende" className="logo" /> <h2 className="nameMerca">MercaEmprende</h2>
       </Link>
       <ul>
         <li>
