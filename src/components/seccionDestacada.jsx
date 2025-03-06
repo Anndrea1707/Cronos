@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/seccionDestacada.css";
-import reloj from "../assets/reloj.jpg";
+import Modelo3D from "./modelo3DPrincipal";
 
 const SeccionDestacada = () => {
   return (
@@ -11,7 +11,7 @@ const SeccionDestacada = () => {
         <button className="btn-destacada">Ver Colección</button>
       </div>
       <div className="destacada-image">
-        <img src={reloj} alt="Reloj mitológico" />
+        <Modelo3D />
       </div>
     </div>
   );
