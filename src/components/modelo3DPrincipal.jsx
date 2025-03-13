@@ -30,7 +30,7 @@ const Modelo3D = () => {
 
         // Cargar modelo 3D
         const loader = new GLTFLoader();
-        loader.load("/Reloj3d.glb", (gltf) => {
+        loader.load("/DiseñoAres.glb", (gltf) => {
             const model = gltf.scene;
             scene.add(model);
 
