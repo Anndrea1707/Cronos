@@ -1,8 +1,7 @@
 import React from "react";
 import "../css/contacto.css";
 import Navbar from "../components/navbar";
-import foto1 from "../assets/Jeisy.jpg"; // Asegúrate de tener las imágenes en la carpeta correcta
-import foto2 from "../assets/Paula.jpg";
+import foto2 from "../assets/Ashly.jpg"
 import foto3 from "../assets/Meli.jpg";
 import Footer from "../components/footer";
 
@@ -31,48 +30,16 @@ const Contac = () => {
                 <div className="photo-card">
                   <div className="photo-card-inner">
                     <div className="photo-card-front">
-                      <img src={foto1} alt="Foto 1" />
-                      <h4>Jeisy Jimenéz</h4>
-                      <p>jdayanajimenez@uts.edu.co</p>
-                    </div>
-                    <div className="photo-card-back">
-                      <p>
-                        Diseñadora Web - Jeisy Jimenéz
-                        <br />
-                        <br />
-                        Jeisy es una apasionada del diseño web con una amplia
-                        experiencia en la creación de interfaces intuitivas y
-                        atractivas. Su enfoque meticuloso y su habilidad para
-                        fusionar la estética con la funcionalidad hacen que cada
-                        proyecto cobre vida de manera única. Con una mente
-                        creativa y un ojo para el detalle, Jeisy se esfuerza por
-                        ofrecer soluciones innovadoras que superen las
-                        expectativas de sus clientes.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="photo-card">
-                  <div className="photo-card-inner">
-                    <div className="photo-card-front">
                       <img src={foto2} alt="Foto 2" />
-                      <h4>Paula Llanes</h4>
-                      <p>pllanes@uts.edu.co</p>
+                      <h4>Ashly Herrera</h4>
+                      <p>akherrera@uts.edu.co</p>
                     </div>
                     <div className="photo-card-back">
                       <p>
-                        Arquitecta de Base de Datos - Paula Llanes
+                        Desarrolladora web - Ashly Herrera
                         <br />
                         <br />
-                        Paula es una experta en el diseño y la gestión de bases
-                        de datos con una sólida formación en ingeniería de
-                        software. Con una mente analítica y meticulosa, Paula se
-                        destaca en la creación de estructuras de datos
-                        eficientes y escalables que forman la base sólida de
-                        cualquier aplicación o sistema. Su habilidad para
-                        comprender las necesidades del negocio y traducirlas en
-                        modelos de datos efectivos la convierte en una pieza
-                        clave en cualquier equipo de desarrollo.
+                        Ashly es una talentosa desarrolladora web con una sólida formación en tecnologías frontend y backend. Con una creatividad innata y una gran atención al detalle, se especializa en la creación de interfaces intuitivas y experiencias de usuario dinámicas. Su dominio de frameworks modernos y su capacidad para optimizar el rendimiento de las aplicaciones la convierten en un pilar fundamental en cualquier equipo de desarrollo. Además, su habilidad para analizar requerimientos y transformar ideas en soluciones digitales eficientes la distingue como una profesional versátil y comprometida con la innovación.
                       </p>
                     </div>
                   </div>

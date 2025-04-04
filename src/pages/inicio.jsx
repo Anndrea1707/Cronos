@@ -25,23 +25,35 @@ const Inicio = () => {
 
   useEffect(() => {
     const fetchRandomProducts = async () => {
-      const productsCol = collection(db, "productos");
-      const productSnapshot = await getDocs(productsCol);
-      const productList = productSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      try {
+        console.log("Conectando a Firestore..."); // <-- Verifica si se ejecuta la función
+        const productsCol = collection(db, "productos");
+        const productSnapshot = await getDocs(productsCol);
 
-      const shuffledProducts = shuffleArray(productList);
+        console.log("Datos obtenidos de Firestore:", productSnapshot.docs.length); // <-- ¿Cuántos documentos hay?
 
-      const randomNewThreeProducts = shuffledProducts.slice(0, 3);
-      setRandomNewProducts(randomNewThreeProducts);
+        const productList = productSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-      const randomDiscountedThreeProducts = shuffledProducts.slice(3, 6);
-      setRandomDiscountedProducts(randomDiscountedThreeProducts);
+        console.log("Lista de productos:", productList); // <-- Muestra los datos obtenidos
+
+        const shuffledProducts = shuffleArray(productList);
+
+        const randomNewThreeProducts = shuffledProducts.slice(0, 3);
+        setRandomNewProducts(randomNewThreeProducts);
+
+        const randomDiscountedThreeProducts = shuffledProducts.slice(3, 6);
+        setRandomDiscountedProducts(randomDiscountedThreeProducts);
+      } catch (error) {
+        console.error("Error al conectar con Firestore:", error); // <-- Muestra el error si hay problemas
+      }
     };
+
     fetchRandomProducts();
   }, []);
+
 
   const shuffleArray = (array) => {
     let currentIndex = array.length;

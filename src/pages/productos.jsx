@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
-import { db } from "../data/conexionBD";
-import { collection, getDocs, query, where } from "firebase/firestore";
 import "../css/productos.css";
 import Navbar from "../components/navbar";
 import Producto from "../components/producto";
 import PreviewModal from "../components/previewModal";
 import { useLocation } from "react-router-dom";
 import Footer from "../components/footer";
-import noResultsImage from "../assets/productNot.gif"; 
+import noResultsImage from "../assets/productNot.gif";
+import products from "../data/products"; // Se importa la lista de productos locales
 
 const Productos = () => {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,44 +31,20 @@ const Productos = () => {
   }, [location.state]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      let productsCol = collection(db, "productos");
+    const filterProducts = () => {
+      let filtered = products;
       if (selectedCategory) {
-        productsCol = query(
-          productsCol,
-          where("categoria", "==", selectedCategory)
+        filtered = filtered.filter((product) => product.categoria === selectedCategory);
+      }
+      if (searchQuery) {
+        filtered = filtered.filter((product) =>
+          product.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
       }
-      const productSnapshot = await getDocs(productsCol);
-      const productList = productSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(productList);
-      setFilteredProducts(productList); // Initially set filtered products
-    };
-    fetchProducts();
-  }, [selectedCategory]);
-
-  useEffect(() => {
-    const filterProducts = () => {
-      if (!searchQuery) {
-        setFilteredProducts(products);
-        return;
-      }
-      const filtered = products.filter(product =>
-        product.nombre.toLowerCase().includes(searchQuery.toLowerCase())
-      );
       setFilteredProducts(filtered);
     };
     filterProducts();
-  }, [searchQuery, products]);
-
-  useEffect(() => {
-    if (!selectedCategory) {
-      setFilteredProducts(products);
-    }
-  }, [selectedCategory, products]);
+  }, [selectedCategory, searchQuery]);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -88,11 +62,7 @@ const Productos = () => {
         {filteredProducts.length > 0 ? (
           <div className="products-container">
             {filteredProducts.map((product) => (
-              <Producto
-                key={product.id}
-                product={product}
-                onClick={handleProductClick}
-              />
+              <Producto key={product.id} product={product} onPreview={handleProductClick} />
             ))}
           </div>
         ) : (

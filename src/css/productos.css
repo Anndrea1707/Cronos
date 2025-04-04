@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-*{
+* {
    font-family: 'Nunito', sans-serif;
-   margin:0; padding:0;
+   margin: 0;
+   padding: 0;
    box-sizing: border-box;
-   outline: none; border:none;
+   outline: none;
+   border: none;
    text-decoration: none;
    transition: all .2s linear;
    text-transform: capitalize;
@@ -16,16 +18,16 @@
    overflow-x: hidden;
 } */
 
-.container-prod{
+.container-prod {
    max-width: 1200px;
    margin: 0 auto;
    padding: 2rem;
-   
+
 }
 
-.container-prod .title{
+.container-prod .title {
    font-size: 2rem;
-   color:#fff;
+   color: #fff;
    margin-bottom: 3rem;
    text-transform: uppercase;
    /* Esta sería la linea a modificar, seria left */
@@ -35,26 +37,26 @@
    padding: 6px;
 }
 
-.container-prod .products-container{
+.container-prod .products-container {
    max-width: 100%;
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(18rem, 10fr));
-   gap:3rem;
+   gap: 3rem;
    ;
 }
 
-.container-prod .products-container .product{
+.container-prod .products-container .product {
    text-align: center;
-   padding:3rem 2rem;
+   padding: 3rem 2rem;
    background: #fff;
-   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
    outline: .1rem solid #005881;
    outline-offset: -1.2rem;
    cursor: pointer;
    border-radius: 2rem
 }
 
-.container-prod .products-container .product:hover{
+.container-prod .products-container .product:hover {
    outline: .2rem solid #005881;
    outline-offset: 0;
    transform: translateY(-4px);
@@ -63,31 +65,35 @@
 
 .container-prod .products-container .product img {
    display: block;
-   margin: 0 auto; /* Centramos la imagen horizontalmente */
-   max-height: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
-   max-width: 100%; /* Aseguramos que la imagen no se desborde del contenedor */
-   object-fit: contain; /* Mantiene la proporción de la imagen */
+   margin: 0 auto;
+   /* Centramos la imagen horizontalmente */
+   max-height: 200px;
+   /* Ajusta el tamaño máximo de la imagen según sea necesario */
+   max-width: 100%;
+   /* Aseguramos que la imagen no se desborde del contenedor */
+   object-fit: contain;
+   /* Mantiene la proporción de la imagen */
    border-radius: 5%;
 }
 
-.container-prod .products-container .product:hover img{
+.container-prod .products-container .product:hover img {
    transform: scale(.9);
 }
 
-.container-prod .products-container .product h3{
-   padding:.5rem 0;
+.container-prod .products-container .product h3 {
+   padding: .5rem 0;
    font-size: 1.5rem;
-   color:#000000;
+   color: #000000;
    font-family: "Oswald";
 }
 
-.container-prod .products-container .product:hover h3{
-   color:#0d7291;
+.container-prod .products-container .product:hover h3 {
+   color: #0d7291;
 }
 
-.container-prod .products-container .product .price{
+.container-prod .products-container .product .price {
    font-size: 1rem;
-   color:#000000;
+   color: #000000;
 }
 
 .products-preview {
@@ -112,17 +118,20 @@
    position: relative;
    margin: 2rem;
    width: 90%;
-   max-width: 500px; /* Ajuste para tamaño máximo */
+   max-width: 500px;
+   /* Ajuste para tamaño máximo */
    border-radius: 1rem;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .products-preview .preview img {
    height: auto;
-   max-height: 200px; /* Limitar la altura máxima de la imagen */
+   max-height: 200px;
+   /* Limitar la altura máxima de la imagen */
    width: auto;
    max-width: 100%;
-   object-fit: contain; /* Asegurar que la imagen no se deforme */
+   object-fit: contain;
+   /* Asegurar que la imagen no se deforme */
    border-radius: 0.5rem;
 }
 
@@ -189,14 +198,24 @@
    align-items: center;
    margin-top: 20px;
 }
- 
+
 .no-results img {
    max-width: 80%;
    height: auto;
    border-radius: 50px;
 
 }
- 
+
+.model-container {
+   width: 100%;
+   height: 350px;
+   /* Aumenta la altura para que el modelo no se corte */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
 @media (max-width: 768px) {
    .products-preview .preview {
       width: 95%;
@@ -204,7 +223,8 @@
    }
 
    .products-preview .preview img {
-      max-height: 150px; /* Ajuste para el tamaño de la imagen en pantallas pequeñas */
+      max-height: 150px;
+      /* Ajuste para el tamaño de la imagen en pantallas pequeñas */
    }
 }
 
@@ -216,7 +236,8 @@
    }
 
    .products-preview .preview img {
-      max-height: 100px; /* Ajuste para el tamaño de la imagen en pantallas más pequeñas */
+      max-height: 100px;
+      /* Ajuste para el tamaño de la imagen en pantallas más pequeñas */
    }
 
    .products-preview .preview .fa-times {
@@ -236,17 +257,17 @@
    }
 }
 
-@media (max-width:991px){
+@media (max-width:991px) {
 
-   html{
+   html {
       font-size: 55%;
    }
 
 }
 
-@media (max-width:450px){
+@media (max-width:450px) {
 
-   html{
+   html {
       font-size: 50%;
    }
 

@@ -1,11 +1,12 @@
 import React from "react";
 
-const Producto = ({ product, onClick }) => {
+const Producto = ({ product, onPreview }) => {
   return (
-    <div className="product" key={product.id} onClick={() => onClick(product)}>
-      <img src={product.imagenUrl} alt={product.nombre} />
-      <h3>{product.nombre}</h3>
-      <div className="price">${product.precio}</div>
+    <div className="product" key={product.id} onClick={() => onPreview(product)}>
+      <img src={product.image} alt={product.name} />
+      <h3>{product.name}</h3>
+      <p className="category">{product.categoria}</p>
+      <div className="price">${product.price}</div>
     </div>
   );
 };

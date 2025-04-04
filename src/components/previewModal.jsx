@@ -1,6 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Importar Link de React Router
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import "../css/productos.css";
+
+const Model3D = ({ modelPath }) => {
+  const { scene } = useGLTF(modelPath);
+  const modelRef = useRef();
+
+  // Animación de rotación constante
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.01; // Ajusta la velocidad de rotación
+    }
+  });
+
+  // Ajustar escala del modelo para que no sea tan grande
+  return <primitive ref={modelRef} object={scene} scale={1} />;
+};
 
 const PreviewModal = ({ product, onClose }) => {
   if (!product) return null;
@@ -9,10 +26,17 @@ const PreviewModal = ({ product, onClose }) => {
     <div className="products-preview">
       <div className="preview">
         <i className="fas fa-times" onClick={onClose}></i>
-        <img src={product.imagenUrl} alt={product.nombre} />
+        <div className="model-container">
+          <Canvas camera={{ position: [0, 2, 6] }}>  {/* Cámara más atrás */}
+            <ambientLight intensity={1} />
+            <directionalLight position={[2, 1, 5]} intensity={5} />
+            <Model3D modelPath={product.model3D} />
+            <OrbitControls enableZoom={false} />
+          </Canvas>
+        </div>
         <h4>{product.categoria}</h4>
-        <h3>{product.nombre}</h3>
-        <div className="price">${product.precio}</div>
+        <h3>{product.name}</h3>
+        <div className="price">${product.price}</div>
         <div className="stars">
           <i className="fas fa-star"></i>
           <i className="fas fa-star"></i>
@@ -21,10 +45,8 @@ const PreviewModal = ({ product, onClose }) => {
           <i className="fas fa-star"></i>
           <span>(5)</span>
         </div>
-        {/* Reemplazar el enlace <a> con un componente <Link> */}
         <div className="buttons">
-          {/* Utilizar el to prop del componente <Link> para especificar la ruta */}
-          <Link to={`/product/${product.id}`} className="cart">Leer más</Link>
+          <Link to={`/product/${encodeURIComponent(product.id)}`} className="cart">Leer más</Link>
         </div>
       </div>
     </div>
