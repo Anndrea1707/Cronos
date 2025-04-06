@@ -1,4 +1,5 @@
-.loading img{
+/* Cargando la imagen */
+.loading img {
     display: block;
     margin: 0 auto; /* Centramos la imagen horizontalmente */
     max-height: 500px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
@@ -7,83 +8,213 @@
     margin-bottom: 5rem;
 }
 
+/* Estilo general del contenedor */
 section .container-click {
     background-color: #fff;
     max-width: 80%;
     border-radius: 2%;
-    max-height: 75%;
     padding-bottom: 10rem;
     margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-section h1{
+/* Título de la página */
+section h1 {
     font-style: italic;
 }
 
-.container-click {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .container-text {
+/* Contenedor de la galería */
+.container-text {
     display: flex;
     flex-direction: column;
-  }
-  
-  .title-font {
+}
+
+/* Fuente del título */
+.title-font {
     font-family: "Poppins", sans-serif;
-  }
-  
-.text-price{
-    color: #000;
+}
+
+/* Estilo del precio */
+.text-price {
+    color: #a3042c;
     margin-right: 1rem;
 }
-  /* Centrar el texto del botón "AGREGAR AL CARRITO" */
+
+/* Estilo del botón de agregar al carrito */
 .boton-agregar {
     text-align: center;
     cursor: pointer;
     background-color: #4a90e2; /* Color de fondo original */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s; /* Transición de cambio de color */
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
-  
-  /* Cambiar el color de fondo del botón al hacer hover */
+
+/* Cambio de color de fondo del botón al hacer hover */
 .boton-agregar:hover {
     background-color: #EEA36B; /* Nuevo color de fondo al hacer hover */
     color: #000;
     border-color: #a34d0b;
 }
 
-.merca-tarjet:hover{
+/* Estilos para el hover de las tarjetas */
+.merca-tarjet:hover {
     margin-bottom: 50px;
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); /* Sombra naranja al hacer hover */
     transform: translateY(-4px);
 }
 
-.estrellita:hover{
+/* Estilo para el hover de la estrella */
+.estrellita:hover {
     transform: translateY(-4px);
 }
 
+/* Imagen del producto principal */
 .img-product {
-    max-height: 400px;
-    max-width: 40%;
-    border-radius: 10rem;
+    max-height: 600px;  /* Aumenta el tamaño máximo */
+    max-width: 60%;  /* Ajusta el tamaño de la imagen */
+    border-radius: 10px;  /* Redondea las esquinas */
+    object-fit: contain;  /* Mantiene la proporción */
 }
 
-.cont-img{
-    padding-top: 3rem;
+/* Contenedor de descripción y detalles del producto */
+.container-text {
+    max-width: 50%;
+    padding: 2rem;
+}
+
+.title-font {
+    font-family: "Poppins", sans-serif;
+    color: #a3042c;
+}
+
+/* Modal de visualización del modelo 3D */
+.model-viewer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
-.cnt-tarjeta {
-    text-transform: none;
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
-p {
-    text-transform: none;
+.close-btn:hover {
+    background-color: #EEA36B;
+    color: #000;
 }
+
+/* Contenedor principal del producto */
+.container-click {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 2%;
+}
+
+/* Contenedor de la galería de imágenes */
+.cont-img {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+/* Galería de imágenes en el costado izquierdo */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    padding: 30px;
+}
+
+.gallery-container img {
+    cursor: pointer;
+    border: 2px solid #d1d1d1;
+    margin-bottom: 10px;
+    width: 180px;
+    height: 100px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.1);
+    border-color: orange;
+}
+
+/* Imagen principal */
+.img-product {
+    max-height: 600px;
+    max-width: 500px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+/* Contenedor de los botones debajo de la imagen */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn-model {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-model:hover {
+    background-color: #EEA36B;
+}
+
+.model-viewer {
+    width: 800px;  /* Mismo ancho que .img-product */
+    height: 500px; /* Mismo alto que .img-product */
+    display: block;
+    border-radius: 10px;
+    object-fit: contain; /* Para que mantenga la proporción */
+    background: linear-gradient(#530015, #ffffff);
+}
+
+.model-viewer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+

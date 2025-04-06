@@ -7,7 +7,7 @@ import { db } from "../data/conexionBD";
 import { collection, getDocs } from "firebase/firestore";
 import "../css/inicio.css";
 import { data } from "../assets/data";
-import estadistica from "../assets/estadistica.jpg";
+import estadistica from "../assets/reloj.jpg";
 import SeccionDestacada from "../components/seccionDestacada";
 
 const Inicio = () => {
@@ -25,23 +25,35 @@ const Inicio = () => {
 
   useEffect(() => {
     const fetchRandomProducts = async () => {
-      const productsCol = collection(db, "productos");
-      const productSnapshot = await getDocs(productsCol);
-      const productList = productSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      try {
+        console.log("Conectando a Firestore..."); // <-- Verifica si se ejecuta la función
+        const productsCol = collection(db, "productos");
+        const productSnapshot = await getDocs(productsCol);
 
-      const shuffledProducts = shuffleArray(productList);
+        console.log("Datos obtenidos de Firestore:", productSnapshot.docs.length); // <-- ¿Cuántos documentos hay?
 
-      const randomNewThreeProducts = shuffledProducts.slice(0, 3);
-      setRandomNewProducts(randomNewThreeProducts);
+        const productList = productSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-      const randomDiscountedThreeProducts = shuffledProducts.slice(3, 6);
-      setRandomDiscountedProducts(randomDiscountedThreeProducts);
+        console.log("Lista de productos:", productList); // <-- Muestra los datos obtenidos
+
+        const shuffledProducts = shuffleArray(productList);
+
+        const randomNewThreeProducts = shuffledProducts.slice(0, 3);
+        setRandomNewProducts(randomNewThreeProducts);
+
+        const randomDiscountedThreeProducts = shuffledProducts.slice(3, 6);
+        setRandomDiscountedProducts(randomDiscountedThreeProducts);
+      } catch (error) {
+        console.error("Error al conectar con Firestore:", error); // <-- Muestra el error si hay problemas
+      }
     };
+
     fetchRandomProducts();
   }, []);
+
 
   const shuffleArray = (array) => {
     let currentIndex = array.length;
@@ -87,43 +99,29 @@ const Inicio = () => {
 
         <br />
 
-        <h3 className="titulo styled-h3"></h3>
-        <div className="container-prod">
-          <div className="products-container">
-            {randomNewProducts.map((product) => (
-              <Producto
-                key={product.id}
-                product={product}
-                onClick={handleProductClick}
-              />
-            ))}
-          </div>
-        </div>
+        <div className="elegant-text-container">
+  <h3 className="elegant-title">
+    Desde la ingeniería de precisión hasta la selección minuciosa de materiales, 
+    cada creación de Cronos representa la convergencia entre innovación y elegancia. 
+    Nuestros relojes son el resultado de una dedicación inquebrantable al detalle, donde cada movimiento, 
+    cada línea y cada textura es pensada para perdurar.
+    <br></br>
+    Cronos no sigue al tiempo. Lo lidera.
+  </h3>
+</div>
+<div className="container-prod">
+  <div className="products-container">
+    {randomNewProducts.map((product) => (
+      <Producto
+        key={product.id}
+        product={product}
+        onClick={handleProductClick}
+      />
+    ))}
+  </div>
 
-        <br />
 
-        <h3 className="titulo styled-h3">Productos en descuento</h3>
-        <div className="container-prod">
-          <div className="products-container">
-            {randomDiscountedProducts.map((product) => (
-              <Producto
-                key={product.id}
-                product={product}
-                onClick={handleProductClick}
-              />
-            ))}
-          </div>
-        </div>
-
-        <br />
-
-        <h3 className="titulo styled-h3">Nuestros mejores emprendimientos</h3>
-        <img src={estadistica} alt="estadistica-empresas" className="estadistica" />
-
-        {selectedProduct && (
-          <PreviewModal product={selectedProduct} onClose={handleClosePreview} />
-        )}
-
+</div>
         <Footer />
       </div>
     </>
