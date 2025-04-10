@@ -6,7 +6,7 @@ const products = [
         categoria: "Hombre",
         colores: [
             { name: "Dorado", hex: "#FFD700" },
-            { name: "Plateado", hex: "#C0C0C0" },
+            { name: "Negro", hex: "#000" },
             { name: "Bronce", hex: "#CD7F32" }
         ],
         descripcion: "Hermoso modelo Cronos para caballero, con un toque místico pero elegante. Luce fantástico con todos tus outfits.",
@@ -25,7 +25,7 @@ const products = [
         name: "Reloj Ares",
         price: 150,
         categoria: "Unisex",
-        image: "/assets/Ares.jpeg",
+        image: "/Ares.jpeg",
         model3D: "/DiseñoAres.glb",
         model3DHand: "/AresMano.glb",
         gallery: [

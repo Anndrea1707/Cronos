@@ -6,7 +6,7 @@ const Producto = ({ product, onPreview }) => {
       <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
       <p className="category">{product.categoria}</p>
-      <div className="price">${product.price}</div>
+      <div className="price">${product.precio}</div>
     </div>
   );
 };

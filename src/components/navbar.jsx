@@ -137,19 +137,6 @@ const Navbar = ({ onCategoryChange }) => {
           <img src={logo_search} alt="logo lupa" className="logo-buscar" />
         </button>
       </form>
-
-      <div className="button-registro">
-        <Link to="/logeo">
-          <button>
-            <img
-              src={logo_registro}
-              alt="logo usuario nuevo"
-              className="logo-registro"
-            />
-          </button>
-        </Link>
-      </div>
-
       <div className="button-carro">
         <Link to="/carro">
           <button>

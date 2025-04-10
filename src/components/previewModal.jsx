@@ -36,7 +36,7 @@ const PreviewModal = ({ product, onClose }) => {
         </div>
         <h4>{product.categoria}</h4>
         <h3>{product.name}</h3>
-        <div className="price">${product.price}</div>
+        <div className="price">${product.precio}</div>
         <div className="stars">
           <i className="fas fa-star"></i>
           <i className="fas fa-star"></i>
