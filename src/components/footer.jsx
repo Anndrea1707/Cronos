@@ -8,9 +8,10 @@ const Footer = () => {
         <div className="footer-section about">
           <h2 className="footer-heading">Sobre Nosotros</h2>
           <p>
-            Somos una empresa dedicada a proporcionar los mejores productos y
-            servicios. Nos esforzamos por brindar una excelente experiencia al
-            cliente.
+          En Cronos, el tiempo se transforma en arte. 
+          Fusionamos innovación, precisión y diseño para crear relojes que reflejan carácter, 
+          elegancia y distinción. Más que instrumentos de medición, 
+          nuestros relojes son piezas de identidad que marcan el ritmo de quienes lideran.
           </p>
         </div>
         <div className="footer-section links">
@@ -26,7 +27,7 @@ const Footer = () => {
           <h2 className="footer-heading">Contacto</h2>
           <p>Dirección: Calle 123 #23-67, Bucaramanga, Colombia</p>
           <p>Teléfono: +57 313 458 2973</p>
-          <p>Email: contactoMerca@mercaemprende.com</p>
+          <p>Email: cronos@cronoscolombia.com</p>
         </div>
         <div className="footer-section social">
           <h2 className="footer-heading">Síguenos</h2>
@@ -39,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Cronos. Todos los derechos reservados.</p>
       </div>
     </footer>
   );

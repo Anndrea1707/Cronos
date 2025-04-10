@@ -7,7 +7,7 @@ import { db } from "../data/conexionBD";
 import { collection, getDocs } from "firebase/firestore";
 import "../css/inicio.css";
 import { data } from "../assets/data";
-import estadistica from "../assets/estadistica.jpg";
+import estadistica from "../assets/reloj.jpg";
 import SeccionDestacada from "../components/seccionDestacada";
 
 const Inicio = () => {
@@ -99,43 +99,29 @@ const Inicio = () => {
 
         <br />
 
-        <h3 className="titulo styled-h3"></h3>
-        <div className="container-prod">
-          <div className="products-container">
-            {randomNewProducts.map((product) => (
-              <Producto
-                key={product.id}
-                product={product}
-                onClick={handleProductClick}
-              />
-            ))}
-          </div>
-        </div>
+        <div className="elegant-text-container">
+  <h3 className="elegant-title">
+    Desde la ingeniería de precisión hasta la selección minuciosa de materiales, 
+    cada creación de Cronos representa la convergencia entre innovación y elegancia. 
+    Nuestros relojes son el resultado de una dedicación inquebrantable al detalle, donde cada movimiento, 
+    cada línea y cada textura es pensada para perdurar.
+    <br></br>
+    Cronos no sigue al tiempo. Lo lidera.
+  </h3>
+</div>
+<div className="container-prod">
+  <div className="products-container">
+    {randomNewProducts.map((product) => (
+      <Producto
+        key={product.id}
+        product={product}
+        onClick={handleProductClick}
+      />
+    ))}
+  </div>
 
-        <br />
 
-        <h3 className="titulo styled-h3">Productos en descuento</h3>
-        <div className="container-prod">
-          <div className="products-container">
-            {randomDiscountedProducts.map((product) => (
-              <Producto
-                key={product.id}
-                product={product}
-                onClick={handleProductClick}
-              />
-            ))}
-          </div>
-        </div>
-
-        <br />
-
-        <h3 className="titulo styled-h3">Nuestros mejores emprendimientos</h3>
-        <img src={estadistica} alt="estadistica-empresas" className="estadistica" />
-
-        {selectedProduct && (
-          <PreviewModal product={selectedProduct} onClose={handleClosePreview} />
-        )}
-
+</div>
         <Footer />
       </div>
     </>

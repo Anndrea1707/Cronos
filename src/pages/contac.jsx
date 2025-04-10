@@ -18,13 +18,18 @@ const Contac = () => {
               </h1>
               <br />
               <p className="toast-container top-0 end-0 p-3 text-justify">
-                MercaEmprende nace en el año 2024 con la pasión de apoyar a los
-                pequeños emprendedores. Somos una tienda online creada por tres
-                estudiantes de las Unidades Tecnológicas de Santander (UTS) que,
-                durante el desarrollo de un proyecto universitario,
-                identificaron la necesidad de crear un espacio virtual donde los
-                pequeños emprendedores pudieran vender una amplia gama de
-                productos de alta calidad a precios accesibles.
+            
+              Somos una marca que cree en el poder de la autenticidad. 
+              En Cronos, diseñamos relojes para líderes, soñadores, visionarios y creadores. 
+              Para quienes entienden que su tiempo es valioso y merece ser llevado con estilo.
+              <br>
+              </br>
+              Inspirados en el dios griego del tiempo, cada reloj Cronos es una manifestación de excelencia 
+              técnica y estética. Nos enfocamos en los detalles que marcan la diferencia: materiales de alta 
+              calidad, mecanismos de precisión y un diseño que fusiona lo clásico con lo moderno. 
+              Cada colección está pensada para aquellos que valoran la sofisticación y entienden que el tiempo 
+              no es solo una medida… es una declaración.
+              <br></br>
               </p>
               <div className="photo-cards-container">
                 <div className="photo-card">
@@ -39,7 +44,14 @@ const Contac = () => {
                         Desarrolladora web - Ashly Herrera
                         <br />
                         <br />
-                        Ashly es una talentosa desarrolladora web con una sólida formación en tecnologías frontend y backend. Con una creatividad innata y una gran atención al detalle, se especializa en la creación de interfaces intuitivas y experiencias de usuario dinámicas. Su dominio de frameworks modernos y su capacidad para optimizar el rendimiento de las aplicaciones la convierten en un pilar fundamental en cualquier equipo de desarrollo. Además, su habilidad para analizar requerimientos y transformar ideas en soluciones digitales eficientes la distingue como una profesional versátil y comprometida con la innovación.
+                        Ashly es una talentosa desarrolladora web con una sólida formación en tecnologías 
+                        frontend y backend. Con una creatividad innata y una gran atención al detalle, 
+                        se especializa en la creación de interfaces intuitivas y experiencias de usuario dinámicas.
+                        Su dominio de frameworks modernos y su capacidad para optimizar el rendimiento de las
+                         aplicaciones la convierten en un pilar fundamental en cualquier equipo de desarrollo. 
+                         Además, su habilidad para analizar requerimientos y transformar ideas en soluciones 
+                         digitales eficientes la distingue como una profesional versátil y comprometida con la 
+                         innovación.
                       </p>
                     </div>
                   </div>
@@ -69,38 +81,6 @@ const Contac = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap -m-2">
-            <div className="p-2 w-full md:w-1/2">
-              <div className="bg-white shadow-md rounded-lg p-6 card contact-card">
-                <h2 className="sm:text-3xl text-2xl font-medium title-font mb-6 text-gray-500 text-left">
-                  Nuestra misión
-                </h2>
-                <p className="leading-relaxed text-base text-right text-justify">
-                  Brindar a los pequeños los ciudadanos de Bucaramanga acceso a
-                  una gran variedad de productos de alta calidad a precios
-                  competitivos. Ofrecer un servicio al cliente excepcional y
-                  personalizado. Crear una comunidad de emprendedores que se
-                  apoyen mutuamente.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-2 w-full md:w-1/2">
-              <div className="bg-white shadow-md rounded-lg p-6 card contact-card">
-                <h3 className="sm:text-3xl text-2xl font-medium title-font mb-6 text-gray-500 text-left">
-                  Nuestras acciones
-                </h3>
-                <p className="leading-relaxed text-base text-right text-justify">
-                  Seleccionamos cuidadosamente cada producto que ofrecemos,
-                  asegurándonos de que cumpla con los más altos estándares de
-                  calidad. Ofrecemos una variedad de opciones de envío y pago
-                  para que puedas elegir la que mejor se adapte a tus
-                  necesidades. <br />
-                </p>
               </div>
             </div>
           </div>

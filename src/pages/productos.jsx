@@ -58,7 +58,7 @@ const Productos = () => {
     <>
       <Navbar />
       <div className="container-prod">
-        <h3 className="title">NUESTROS PRODUCTOS</h3>
+        <h3 className="title">Para ellos</h3>
         {filteredProducts.length > 0 ? (
           <div className="products-container">
             {filteredProducts.map((product) => (

@@ -25,6 +25,7 @@
 
 }
 
+
 .container-prod .title {
    font-size: 2rem;
    color: #fff;
@@ -32,7 +33,7 @@
    text-transform: uppercase;
    /* Esta sería la linea a modificar, seria left */
    text-align: center;
-   background-color: #005881;
+   background-color: #101a33;
    border-radius: 500px;
    padding: 6px;
 }
