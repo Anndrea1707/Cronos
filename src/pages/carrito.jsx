@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../css/carrito.css";
 import Navbar from "../components/navbar";
 import Producto from "../components/producto";
 import PreviewModal from "../components/previewModal";
-import productoImg1 from "../assets/product1.webp";
-import productoImg2 from "../assets/product2.webp";
-import productoImg3 from "../assets/product3.jpg";
 import { db } from "../data/conexionBD";
 import { collection, getDocs } from "firebase/firestore";
 import Footer from "../components/footer";
 import Basurita from "../assets/basurita.png";
+import { CartContext } from "../context/CartContext"; // Importa el contexto del carrito
 
 export const Carrito = () => {
-  // Productos random en la parte inferior
   const [randomNewProducts, setRandomNewProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { cartItems, removeFromCart, updateQuantity, clearCart } = useContext(CartContext); // Accede al estado y las funciones del carrito
+  const [total, setTotal] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchRandomProducts = async () => {
@@ -26,26 +26,28 @@ export const Carrito = () => {
       }));
 
       const shuffledProducts = shuffleArray(productList);
-
       const randomNewThreeProducts = shuffledProducts.slice(0, 6);
       setRandomNewProducts(randomNewThreeProducts);
     };
     fetchRandomProducts();
   }, []);
 
+  useEffect(() => {
+    // Calcular el total del pedido cada vez que cambien los items del carrito
+    const nuevoTotal = cartItems.reduce(
+      (acc, item) => acc + item.precio * item.quantity,
+      0
+    );
+    setTotal(nuevoTotal);
+  }, [cartItems]);
+
   const shuffleArray = (array) => {
     let currentIndex = array.length;
-    let temporaryValue, randomIndex;
-
     while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
+      const randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
-
     return array;
   };
 
@@ -57,77 +59,26 @@ export const Carrito = () => {
     setSelectedProduct(null);
   };
 
-  // Estado para almacenar los productos en el carrito
-  const [productos, setProductos] = useState([
-    {
-      id: 1,
-      nombre: "Botas Cartepillar",
-      cantidad: 1,
-      precio: 150000,
-      descripcion: "Descripción del producto ",
-      imagen: productoImg1,
-    },
-    {
-      id: 2,
-      nombre: "Rubor liquido",
-      cantidad: 2,
-      precio: 50000,
-      descripcion: "Descripción del producto",
-      imagen: productoImg2,
-    },
-    {
-      id: 3,
-      nombre: "Falda corta en dril",
-      cantidad: 3,
-      precio: 80000,
-      descripcion: "Descripción del producto",
-      imagen: productoImg3,
-    },
-  ]);
-
-  // Estado para almacenar el total del pedido
-  const [total, setTotal] = useState(0);
-  // Estado para almacenar la cantidad total de productos
-  const [cantidadTotal, setCantidadTotal] = useState(0);
-
-  // Calcular el total del pedido y la cantidad total de productos cada vez que cambien los productos
-  useEffect(() => {
-    const nuevoTotal = productos.reduce(
-      (acc, producto) => acc + producto.precio * producto.cantidad,
-      0
-    );
-    setTotal(nuevoTotal);
-
-    const nuevaCantidadTotal = productos.reduce(
-      (acc, producto) => acc + producto.cantidad,
-      0
-    );
-    setCantidadTotal(nuevaCantidadTotal);
-  }, [productos]);
-
-  // Función para eliminar un producto del carrito
   const eliminarProducto = (id) => {
-    setProductos(productos.filter((producto) => producto.id !== id));
+    removeFromCart(id);
   };
 
-  // Función para manejar el cambio de cantidad de un producto
   const handleCantidadChange = (id, cantidad) => {
-    const nuevosProductos = productos.map((producto) => {
-      if (producto.id === id) {
-        return { ...producto, cantidad: cantidad < 0 ? 0 : cantidad };
-      }
-      return producto;
-    });
-    setProductos(nuevosProductos);
+    updateQuantity(id, cantidad);
   };
-
-  const [modalVisible, setModalVisible] = useState(false);
 
   const realizarCompra = () => {
-    setModalVisible(true);
+    if (cartItems.length > 0) {
+      setModalVisible(true);
+      // Aquí podrías implementar la lógica para procesar la compra
+      // (enviar datos a un servidor, etc.)
+      // Opcionalmente, podrías limpiar el carrito después de simular la compra:
+      // clearCart();
+    } else {
+      alert("El carrito está vacío. Añade productos para realizar la compra.");
+    }
   };
 
-  // Función para cerrar el modal
   const cerrarModal = () => {
     setModalVisible(false);
   };
@@ -138,51 +89,59 @@ export const Carrito = () => {
       <div className="container">
         <div className="productos">
           <h3 className="titulo-seccion">Productos añadidos</h3>
-          {productos.map((producto) => (
-            <div className="producto" key={producto.id}>
-              <div className="info-producto">
-                <div className="imagen-producto">
-                  <img src={producto.imagen} alt={producto.nombre} />
+          {cartItems.length === 0 ? (
+            <p>El carrito está vacío.</p>
+          ) : (
+            cartItems.map((producto) => (
+              <div className="producto" key={producto.id}>
+                <div className="info-producto">
+                  <div className="imagen-producto">
+                    <img src={producto.image} alt={producto.name} />
+                  </div>
+                  <div className="detalle-producto">
+                    <h4 className="nombre-producto">{producto.name}</h4>
+                    <p className="descripcion-producto">{producto.descripcion}</p>
+                  </div>
                 </div>
-                <div className="detalle-producto">
-                  <h4 className="nombre-producto">{producto.nombre}</h4>
-                  <p className="descripcion-producto">{producto.descripcion}</p>
+                <div className="cantidad">
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value={producto.quantity}
+                    onChange={(e) =>
+                      handleCantidadChange(producto.id, parseInt(e.target.value))
+                    }
+                  />
+                </div>
+                <div className="precio">
+                  <p className="precio-producto">
+                    ${(producto.precio * producto.quantity).toLocaleString()}
+                  </p>
+                  <button
+                    className="eliminar-producto"
+                    onClick={() => eliminarProducto(producto.id)}
+                  >
+                    <img src={Basurita} alt="Eliminar" />
+                  </button>
                 </div>
               </div>
-              <div className="cantidad">
-                <input
-                  type="number"
-                  min="0"
-                  max="100"
-                  value={producto.cantidad}
-                  onChange={(e) =>
-                    handleCantidadChange(producto.id, parseInt(e.target.value))
-                  }
-                />
-              </div>
-              <div className="precio">
-                <p className="precio-producto">
-                  ${producto.precio.toLocaleString()}
-                </p>
-                <button
-                  className="eliminar-producto"
-                  onClick={() => eliminarProducto(producto.id)}
-                >
-                  <img src={Basurita} alt="Eliminar" />
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
         <div className="resumen-pedido">
           <h3 className="titulo-seccion">Resumen del Pedido</h3>
           <div className="total">
-            <span>Cantidad total: {cantidadTotal}</span>
+            <span>Cantidad total: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}</span>
           </div>
           <div className="total">
             <span>Total: ${total.toLocaleString()}</span>
           </div>
-          <button className="realizar-compra" onClick={realizarCompra}>
+          <button
+            className="realizar-compra"
+            onClick={realizarCompra}
+            disabled={cartItems.length === 0}
+          >
             Realizar Compra
           </button>
         </div>
@@ -203,18 +162,7 @@ export const Carrito = () => {
 
       <br />
 
-      <h3 className="titulo styled-h3">Productos relacionados</h3>
-      <div className="container-prod">
-        <div className="products-container">
-          {randomNewProducts.map((product) => (
-            <Producto
-              key={product.id}
-              product={product}
-              onClick={handleProductClick}
-            />
-          ))}
-        </div>
-      </div>
+      
 
       {selectedProduct && (
         <PreviewModal product={selectedProduct} onClose={handleClosePreview} />

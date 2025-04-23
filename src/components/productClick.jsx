@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import ModelViewer from "./modelViewer";
 import "../css/detalleProducto.css";
+import { CartContext } from "../context/CartContext"; // Importa el contexto del carrito
 
-function ProductClick({ addToCart }) {
+function ProductClick() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showModel, setShowModel] = useState(false);
   const [currentModel, setCurrentModel] = useState("");
+  const { addToCart } = useContext(CartContext); // Accede a la función addToCart del contexto
 
   useEffect(() => {
     import("../data/products")
       .then((module) => {
         const productsData = module.default;
-
         const foundProduct = productsData.find((p) => String(p.id) === String(id));
         if (foundProduct) {
           setProduct(foundProduct);
@@ -26,9 +27,10 @@ function ProductClick({ addToCart }) {
       .catch((error) => console.error("Error cargando los productos:", error));
   }, [id]);
 
-  const handleAddToCart = () => {
-    if (typeof addToCart === "function") {
+  const handleAddToCartClick = () => {
+    if (product) {
       addToCart(product);
+      alert(`${product.name} ha sido añadido al carrito.`); // Opcional: dar feedback al usuario
     }
   };
 
@@ -65,7 +67,7 @@ function ProductClick({ addToCart }) {
                     key={index}
                     src={img}
                     alt={`Vista ${index + 1}`}
-                    className={selectedImage === img ? "border-orange-500" : "border-gray-300"}
+                    className={selectedImage === img ? "border-orange-500 " : "border-gray-300"}
                     onClick={() => handleImageClick(img)}
                   />
                 ))
@@ -117,7 +119,7 @@ function ProductClick({ addToCart }) {
 
               <div className="flex ">
                 <span className="title-font font-medium text-2xl text-price">${product.precio}</span>
-                <button className="flex ml-auto text-white boton-agregar" onClick={handleAddToCart}>
+                <button className="flex ml-auto text-white boton-agregar" onClick={handleAddToCartClick}>
                   AÑADIR AL CARRITO
                 </button>
               </div>
